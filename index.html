@@ -3,119 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sijil - Bengkel Conquer Exam</title>
-    <!-- Tailwind CSS untuk styling -->
+    <title>Semakan Sijil - Bengkel Conquer Exam</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Custom spinner animation */
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #3b82f6;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col justify-between">
-
+<body class="bg-gray-100 min-h-screen font-sans">
     <!-- Header -->
-    <header class="bg-blue-600 text-white shadow-md">
-        <div class="max-w-4xl mx-auto px-4 py-6 text-center sm:text-left">
-            <h1 class="text-2xl font-bold tracking-tight">Portal Semakan Sijil</h1>
-            <p class="text-blue-100 mt-1 text-md font-medium">Bengkel Conquer Exam with Scientific Calculator</p>
+    <header class="bg-blue-800 text-white p-6 shadow-md">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-2xl font-bold">Portal Semakan Sijil Penyertaan</h1>
+            <p class="text-sm mt-1 text-blue-200">Bengkel Conquer Exam with Scientific Calculator</p>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="flex-grow flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg overflow-hidden border border-gray-100">
-            
-            <!-- Form Section -->
-            <div class="p-8">
-                <div class="text-center mb-8">
-                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-blue-600 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                    </div>
-                    <h2 class="text-xl font-semibold text-gray-800">Semakan Sijil Penyertaan</h2>
-                    <p class="text-gray-500 text-sm mt-2">Sila masukkan Nombor Kad Pengenalan anda tanpa tanda sempang (-)</p>
+    <main class="max-w-4xl mx-auto p-6 mt-8">
+        <div class="bg-white rounded-xl shadow-lg p-8 max-w-lg mx-auto">
+            <div class="text-center mb-8">
+                <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
                 </div>
-
-                <form id="semakForm" class="space-y-5">
-                    <div>
-                        <label for="no_kp" class="block text-sm font-medium text-gray-700 mb-1">No. Kad Pengenalan</label>
-                        <input type="text" id="no_kp" name="no_kp" 
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors shadow-sm"
-                            placeholder="Contoh: 900101145555" required maxlength="12" pattern="[0-9]{12}" title="Sila masukkan 12 digit nombor sahaja">
-                    </div>
-                    
-                    <button type="submit" 
-                        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex justify-center items-center gap-2 shadow-md hover:shadow-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                        </svg>
-                        Semak Status
-                    </button>
-                </form>
+                <h2 class="text-xl font-bold text-gray-800">Semakan Sijil Penyertaan</h2>
+                <p class="text-gray-500 text-sm mt-2">Sila masukkan Nombor Kad Pengenalan anda tanpa tanda sempang (-)</p>
             </div>
 
-            <!-- Result Section (Hidden by default) -->
-            <div id="resultContainer" class="hidden border-t border-gray-100 bg-gray-50 p-8">
-                
-                <!-- Loading State -->
-                <div id="loadingState" class="hidden flex flex-col items-center justify-center py-4">
-                    <div class="loader mb-3"></div>
-                    <p class="text-gray-500 text-sm animate-pulse">Sedang menyemak pangkalan data...</p>
+            <form id="semakForm" class="space-y-4">
+                <div>
+                    <label for="no_kp" class="block text-sm font-medium text-gray-700">No. Kad Pengenalan</label>
+                    <input type="text" id="no_kp" name="no_kp" required placeholder="Contoh: 010203101234" pattern="[0-9]+" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
+                <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-800 hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    Semak Status
+                </button>
+            </form>
 
-                <!-- Result Content -->
-                <div id="resultContent" class="hidden text-center space-y-4">
-                    <!-- Icon Status -->
-                    <div id="statusIcon" class="mx-auto flex items-center justify-center h-16 w-16 rounded-full mb-2">
-                        <!-- Icon injected by JS -->
+            <!-- Loading State -->
+            <div id="loadingState" class="hidden mt-8 text-center">
+                <svg class="animate-spin h-8 w-8 text-blue-600 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <p class="text-gray-500 mt-2 text-sm">Menyemak pangkalan data...</p>
+            </div>
+
+            <!-- Result Container -->
+            <div id="resultContainer" class="hidden mt-8 border-t border-gray-200 pt-6">
+                <div id="resultContent" class="text-center">
+                    <div id="statusIcon" class="mx-auto flex items-center justify-center h-12 w-12 rounded-full mb-4">
+                        <!-- Icon disuntik oleh JS -->
                     </div>
+                    <h3 id="pesertaNama" class="text-lg font-bold text-gray-900 mb-1"></h3>
+                    <p id="statusMesej" class="text-gray-600 text-sm mb-6"></p>
                     
-                    <!-- Text Details -->
-                    <h3 id="pesertaNama" class="text-lg font-bold text-gray-900 uppercase"></h3>
-                    <p id="statusMesej" class="text-md text-gray-600"></p>
-                    
-                    <!-- Download Action -->
-                    <div id="downloadAction" class="hidden pt-4 mt-2 border-t border-gray-200">
-                        <p class="text-sm text-gray-500 mb-3">Sijil anda telah sedia. Sila klik butang di bawah untuk membukanya.</p>
-                        <!-- Tag <a> untuk fungsi muat turun fail dari link Google Sheet -->
-                        <a id="btnDownload" href="#" target="_blank" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2.5 px-6 rounded-lg transition-colors inline-flex items-center gap-2 shadow-md">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <!-- Action Area -->
+                    <div id="downloadAction" class="hidden bg-gray-50 rounded-lg p-4">
+                        <p class="text-sm text-gray-700 mb-3 font-medium">Sijil anda sedia untuk dimuat turun</p>
+                        <a id="btnDownload" href="#" target="_blank" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                             </svg>
                             Buka & Muat Turun Sijil
                         </a>
                     </div>
                 </div>
-
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 py-6 text-center">
+    <footer class="bg-white border-t border-gray-200 mt-12 py-6 text-center">
         <p class="text-gray-500 text-sm">&copy; 2026 Sistem Pengurusan Sijil. Hak cipta terpelihara.</p>
     </footer>
 
     <script>
-        // MASUKKAN URL WEB APP GOOGLE SCRIPT ANDA DI SINI
-        const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzSy1KFv_O9Vn3lZzxVo7q4FqwqM5rcxPdPPaTz89VvtLXBp7psRuawAtHU_sjRvDe7rQ/exec";
+        const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbyYkkGACwxPK4kuPLKPdF1uhuUb8Dzbaw6b8QyLI3PBzI_i31aB8ivPnlGWoGEjOKwMYg/exec";
 
         // DOM Elements
         const form = document.getElementById('semakForm');
@@ -129,25 +94,16 @@
         const downloadAction = document.getElementById('downloadAction');
         const btnDownload = document.getElementById('btnDownload');
 
-        // Form Submit Event Listener
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Bersihkan input (Buang dash jika ada, ambil nombor sahaja)
-            const kpCarian = inputKp.value.replace(/\D/g, '');
+            const kpCarian = inputKp.value.replace(/\D/g, ''); // Buang dash jika ada
             
-            // Reset UI (Tunjuk loading)
+            // Reset UI 
             resultContainer.classList.remove('hidden');
             resultContent.classList.add('hidden');
             loadingState.classList.remove('hidden');
             downloadAction.classList.add('hidden');
-            
-            // Peringatan jika URL belum ditukar
-            if(GOOGLE_SHEET_API_URL === "LETAK_URL_APPS_SCRIPT_ANDA_DI_SINI") {
-                alert("Sila masukkan URL Google Apps Script dalam kod HTML terlebih dahulu.");
-                loadingState.classList.add('hidden');
-                return;
-            }
 
             // Panggil data dari Google Sheet secara live
             fetch(GOOGLE_SHEET_API_URL)
@@ -162,45 +118,41 @@
                 });
         });
 
-        // Logik Semakan
-        function semakStatus(kpCarian, pangkalanData) {
+        function semakStatus(kp, pangkalanData) {
             loadingState.classList.add('hidden');
             resultContent.classList.remove('hidden');
+            
+            // Cari data berdasarkan No KP
+            const rekod = pangkalanData.find(item => item.kp === kp);
 
-            // Cari dalam pangkalan data yang ditarik dari Google
-            let currentPeserta = pangkalanData.find(peserta => peserta.kp === kpCarian);
-
-            if (currentPeserta) {
-                // Rekod Dijumpai
-                pesertaNama.textContent = currentPeserta.nama;
-
-                if (currentPeserta.status_emel) {
-                    // KES 1: TELAH DIHANTAR KE EMEL
-                    statusIcon.className = "mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 text-green-600 mb-2";
-                    statusIcon.innerHTML = `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
-                    statusMesej.innerHTML = `Sijil anda telah berjaya dihantar ke e-mel berdaftar anda.<br><span class="text-sm text-green-600 font-medium mt-1 inline-block">Sila semak peti masuk (Inbox) atau Spam folder anda.</span>`;
-                } else {
-                    // KES 2: BELUM DIHANTAR
-                    statusIcon.className = "mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-yellow-100 text-yellow-600 mb-2";
-                    statusIcon.innerHTML = `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
-                    statusMesej.innerHTML = `Sijil anda <strong>belum dihantar</strong> ke e-mel. Anda boleh membukanya di bawah.`;
-                }
-
-                // Semak jika Google Sheet menyediakan link sijil pada Lajur D
-                if (currentPeserta.link_sijil && currentPeserta.link_sijil !== "undefined" && currentPeserta.link_sijil !== "") {
-                    downloadAction.classList.remove('hidden'); // Tunjuk butang muat turun
-                    btnDownload.href = currentPeserta.link_sijil; // Guna URL PDF dari Google Sheet
-                } else {
-                    downloadAction.classList.add('hidden'); // Sorok butang jika tiada link
-                }
+            if (rekod) {
+                pesertaNama.textContent = rekod.nama;
                 
+                // Semak jika ada link sijil di Lajur C
+                if (rekod.link_sijil && rekod.link_sijil !== "") {
+                    statusIcon.className = 'mx-auto flex items-center justify-center h-12 w-12 rounded-full mb-4 bg-green-100 text-green-600';
+                    statusIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>`;
+                    
+                    statusMesej.textContent = "Tahniah! Sijil anda telah dijana dan sedia untuk dimuat turun.";
+                    statusMesej.className = 'text-green-600 font-medium text-sm mb-6';
+                    
+                    downloadAction.classList.remove('hidden');
+                    btnDownload.href = rekod.link_sijil; // Guna link sijil dari Google Sheet
+                } else {
+                    statusIcon.className = 'mx-auto flex items-center justify-center h-12 w-12 rounded-full mb-4 bg-yellow-100 text-yellow-600';
+                    statusIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`;
+                    
+                    statusMesej.textContent = "Rekod anda dijumpai, tetapi pautan sijil belum tersedia. Sila hubungi urusetia.";
+                    statusMesej.className = 'text-yellow-600 font-medium text-sm mb-6';
+                }
             } else {
-                // KES 3: REKOD TIDAK DIJUMPAI
-                pesertaNama.textContent = "Rekod Tidak Dijumpai";
-                statusIcon.className = "mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-red-100 text-red-600 mb-2";
-                statusIcon.innerHTML = `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
-                statusMesej.innerHTML = `Maaf, tiada rekod sijil ditemui untuk No. Kad Pengenalan <strong>${kpCarian}</strong>. Sila pastikan IC yang dimasukkan adalah betul.`;
-                downloadAction.classList.add('hidden');
+                // Tiada rekod dijumpai
+                statusIcon.className = 'mx-auto flex items-center justify-center h-12 w-12 rounded-full mb-4 bg-red-100 text-red-600';
+                statusIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>`;
+                
+                pesertaNama.textContent = "Tiada Rekod Dijumpai";
+                statusMesej.textContent = "Sila pastikan Nombor Kad Pengenalan dimasukkan dengan betul. Jika masalah berterusan, hubungi pihak urusetia.";
+                statusMesej.className = 'text-red-500 font-medium text-sm mb-6';
             }
         }
     </script>
